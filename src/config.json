@@ -1,3 +1,6 @@
 {
-  "course_url": "http://www.xuetangx.com/courses/course-v1:TsinghuaX+10610224X+2017_T1/info"
+  "cookie_path": "cookie.json",
+  "root_url": "https://www.xuetangx.com",
+  "course_url": "course-v1:TsinghuaX+10610224X+2017_T1",
+  "redownload_existing_subtitles": false
 }

@@ -1,3 +1,16 @@
 {
-  "__comment": "Put your cookie in this file."
+  "__comments": "按理说学堂在线的 cookie 应该有下面这些项目",
+  "ajs_anonymous_id": "",
+  "edxloggedin": "",
+  "sessionid": "",
+  "sharesessionid": "",
+  "frontendUserTrackPrev": "",
+  "sequence": "",
+  "csrftoken": "",
+  "frontendUserTrack": "",
+  "frontendUserReferrer": "",
+  "ajs_user_id": "",
+  "ajs_group_id": "",
+  "user_id": "",
+  "_log_user_id": ""
 }
