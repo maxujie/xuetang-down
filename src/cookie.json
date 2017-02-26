@@ -1,16 +1,16 @@
 {
-  "__comments": "按理说学堂在线的 cookie 应该有下面这些项目",
+  "__comments": "Put your cookies here",
   "ajs_anonymous_id": "",
   "edxloggedin": "",
   "sessionid": "",
   "sharesessionid": "",
-  "frontendUserTrackPrev": "",
-  "sequence": "",
-  "csrftoken": "",
   "frontendUserTrack": "",
-  "frontendUserReferrer": "",
-  "ajs_user_id": "",
   "ajs_group_id": "",
+  "ajs_user_id": "",
+  "sequence": "",
+  "frontendUserTrackPrev": "",
+  "frontendUserReferrer": "",
+  "csrftoken": "",
   "user_id": "",
   "_log_user_id": ""
 }
