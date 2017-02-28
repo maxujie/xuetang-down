@@ -1,11 +1,13 @@
 #!/usr/env python3
 # -*- coding: utf-8 -*-
 
+import gzip
 import json
 import os
 import sys
 import re
 import requests
+import tempfile
 from bs4 import BeautifulSoup
 
 
@@ -79,7 +81,6 @@ class XuetangDown(object):
         self.session = sess
 
     def get_chapters(self):
-        # TODO: Cookie validity check
         progress_url = self.root_url + '/courses/' + self.course_url + '/' + 'progress'
         sess = self.session
         assert isinstance(sess, requests.Session)
@@ -117,9 +118,17 @@ class XuetangDown(object):
         sub_url = self.root_url + match[0]
 
         sub = self.session.get(sub_url)
-        with open(save_filename, 'wb') as f:
-            for chunk in sub.iter_content(self.chunk_size):
-                f.write(chunk)
+        assert sub.status_code == 200
+
+        if sub.headers.get('Content-Encoding') == 'gzip':
+            with open(save_filename, 'wb') as f:
+                for chunk in sub.iter_content(self.chunk_size):
+                    f.write(chunk)
+        else:
+            content = sub.content
+            unzipped_data = gzip_decompress(content)
+            with open(save_filename, 'wb') as f:
+                f.write(unzipped_data)
 
     def download_all_subtitles(self):
         if not os.path.exists('download'):
@@ -127,6 +136,17 @@ class XuetangDown(object):
 
         for subsection in self.subsections:
             self.download_subtitle(subsection)
+
+
+def gzip_decompress(gzdata):
+    # TODO: This method is dirty. Rewrite it.
+    tempfilename = '__temp.gz'
+    with open(tempfilename, 'wb') as f:
+        f.write(gzdata)
+    with gzip.open(tempfilename, 'rb') as f:
+        unzipped_data = f.read()
+    os.remove(tempfilename)
+    return unzipped_data
 
 
 def main():
